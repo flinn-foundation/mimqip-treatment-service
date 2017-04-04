@@ -1,0 +1,13 @@
+﻿"ID","NAME","ABBREVIATION","VALID"
+10,Selective serotonin reuptake inhibitor,SSRI,1
+11,Second Generation Antipsychotic,SGA,1
+12,Seratonin Norepinephrine Reuptake Inhibitor,SNRI,1
+13,First Generation Antipsychotic,FGA,1
+14,Tricyclic antidepressant,TCA,1
+16,Monoamine oxidase inhibitor,MAOI,1
+17,Mood Stabilizer,Mood Stabilizer,1
+18,Dopamine / norepinephrine reuptake inhibitor,DNRI,1
+19,Anxiolytics,Anxiolytics,1
+20,Norepinephrine / serotonin modulator,NSM,1
+21,T3,T3,1
+22,combination,combination,1

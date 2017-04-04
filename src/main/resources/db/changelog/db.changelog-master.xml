@@ -1,0 +1,205 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="Michael Iden" id="1489345089097-26">
+        <createTable tableName="MESSAGE">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="PRIORITY" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MESSAGE_TAG" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TEXT" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michael Iden" id="1489345089097-27">
+        <createTable tableName="RULE">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRIORITY" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALID" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TRUE_MESSAGE_ID" type="BIGINT">
+            </column>
+            <column name="FALSE_MESSAGE_ID" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michael Iden" id="1489345089097-28">
+        <createTable tableName="RULE_CRITERION">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="RULE_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRIORITY" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIELD_NAME" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OPERATOR" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALUE" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="miden (generated)" id="1489345089097-29">
+        <createTable tableName="RecommendRule_RecommendDiagnosis">
+            <column name="RuleID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiagnosisID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="miden (generated)" id="1489345089097-31">
+        <createTable tableName="TREATMENT">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="GROUP_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ABBREVIATION" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALID" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GENERIC_NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="miden (generated)" id="1489345089097-32">
+        <createTable tableName="TREATMENT_DETAIL">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="TREATMENT_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="KEY" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALUE" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michael Iden" id="1489345089097-33">
+        <createTable tableName="TREATMENT_GROUP">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ABBREVIATION" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALID" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="miden (generated)" id="1489345089097-34">
+        <createTable tableName="Treatment_Diagnosis">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="TreatmentID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DiagnosisID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Row" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="Drug" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-messages">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/message-20170328.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="MESSAGE"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-rules">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/rule-20170328.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="RULE"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-rule-criteria">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/rule-criterion-20170329.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="RULE_CRITERION"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-treatments">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/treatment-20170329.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="TREATMENT"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-treatment-groups">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/treatment-group-20170329.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="TREATMENT_GROUP"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-treatment-details">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/treatment-detail-20170329.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="TREATMENT_DETAIL"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>
