@@ -77,6 +77,22 @@
             </column>
         </createTable>
     </changeSet>
+    <changeSet author="miden (generated)" id="1489345089097-24">
+        <createTable tableName="DIAGNOSIS">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="DIAGNOSIS" type="VARCHAR(250)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STAGE" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOTES" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
     <changeSet author="Michael Iden" id="treatment-create-table">
         <createTable tableName="TREATMENT">
             <column name="ID" type="BIGINT">
@@ -139,24 +155,24 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="miden (generated)" id="1489345089097-34">
-        <createTable tableName="Treatment_Diagnosis">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="TreatmentID" type="INT">
+    <changeSet author="Michael Iden" id="diagnosis-treatments-create-table">
+        <createTable tableName="DIAGNOSIS_TREATMENTS">
+            <column name="DIAGNOSIS_ID" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
-            <column name="DiagnosisID" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="Row" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="Drug" type="INT">
+            <column name="TREATMENTS_ID" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170405-load-diagnosis">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/diagnosis-20170405.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="DIAGNOSIS"
+                  quotchar='"'>
+        </loadData>
     </changeSet>
     <changeSet author="Michael Iden" id="20170405-load-treatments">
         <loadData encoding="UTF-8"
@@ -164,6 +180,24 @@
                   schemaName="public"
                   separator=","
                   tableName="TREATMENT"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-treatment-groups">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/treatment-group-20170329.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="TREATMENT_GROUP"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170405-load-diagnosis-treatments">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/diagnosis-treatments-20170405.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="DIAGNOSIS_TREATMENTS"
                   quotchar='"'>
         </loadData>
     </changeSet>
@@ -191,15 +225,6 @@
                   schemaName="public"
                   separator=","
                   tableName="RULE_CRITERION"
-                  quotchar='"'>
-        </loadData>
-    </changeSet>
-    <changeSet author="Michael Iden" id="20170328-load-treatment-groups">
-        <loadData encoding="UTF-8"
-                  file="db/sampledata/treatment-group-20170329.csv"
-                  schemaName="public"
-                  separator=","
-                  tableName="TREATMENT_GROUP"
                   quotchar='"'>
         </loadData>
     </changeSet>

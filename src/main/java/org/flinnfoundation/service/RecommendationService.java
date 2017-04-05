@@ -1,6 +1,7 @@
 package org.flinnfoundation.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.flinnfoundation.respository.DiagnosisRepository;
 import org.flinnfoundation.respository.TreatmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,16 +10,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class RecommendationService {
 
+    private DiagnosisRepository diagnosisRepository;
     private TreatmentRepository treatmentRepository;
 
     @Autowired
-    public RecommendationService(TreatmentRepository treatmentRepository) {
+    public RecommendationService(DiagnosisRepository diagnosisRepository, TreatmentRepository treatmentRepository) {
+        this.diagnosisRepository = diagnosisRepository;
         this.treatmentRepository = treatmentRepository;
     }
 
     public void getTreatments() {
         treatmentRepository.findAll().forEach(treatment -> log.info(treatment.toString()));
     }
+
+    public void getDiagnoses() {
+        diagnosisRepository.findAll().forEach(diagnosis -> log.info(diagnosis.toString()));
+    }
+
 
 
 //    public String getRecommendation(PatientDataDto patientData) {
@@ -79,7 +87,7 @@ public class RecommendationService {
 //
 //        String[] status = {"Patient Name: " + patient.getDetails().get("firstname")[0].getValue() + " " + patient.getDetails().get("lastname")[0].getValue(),
 //                "Patient Birthday: " + patient.getDetails().get("birth")[0].getValue(),
-//                "Patient Diagnosis: " + patientInfo.getInfo().get("diagnosis_primary"),
+//                "Patient DiagnosisTemp: " + patientInfo.getInfo().get("diagnosis_primary"),
 //                "Patient Stage: " + patientInfo.getInfo().get("diagnosis_stage")};
 //        rrb.setStatus(status);
 //        String[] medications = new String[patientInfo.getPrescriptioninfo().size()];

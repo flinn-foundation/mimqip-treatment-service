@@ -5,7 +5,7 @@ import org.flinnfoundation.model.Treatment;
 import java.util.Arrays;
 import java.util.List;
 
-public class Diagnosis {
+public class DiagnosisTemp {
 
     private static final List<Integer> STAGES = Arrays.asList(1,2,3,4);
 

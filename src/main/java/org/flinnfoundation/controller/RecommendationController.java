@@ -15,9 +15,15 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    @GetMapping("/recommend")
-    public String getRecommendation(PatientDataDto patientData) {
+    @GetMapping("/treatments")
+    public String getTreatments(PatientDataDto patientData) {
         recommendationService.getTreatments();
+        return "";
+    }
+
+    @GetMapping("/diagnoses")
+    public String getDiagnoses(PatientDataDto patientData) {
+        recommendationService.getDiagnoses();
         return "";
     }
 }
