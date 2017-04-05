@@ -2,18 +2,15 @@ package org.flinnfoundation.model;
 
 import lombok.Data;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.List;
 
-@Entity
 @Data
-public class Treatment {
+@Entity
+public class Treatment2 {
 
     @Id
-    @GeneratedValue
     private long id;
 
     private long groupId;
@@ -26,6 +23,7 @@ public class Treatment {
 
     private String genericName;
 
-    @OneToMany
-    private List<TreatmentDetail> treatmentDetail;
+    @Embedded
+    private TreatmentDetail2 treatmentDetail;
+
 }

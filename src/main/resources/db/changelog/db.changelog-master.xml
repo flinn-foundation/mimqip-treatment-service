@@ -97,6 +97,52 @@
             <column name="GENERIC_NAME" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
+    <changeSet author="Michael Iden" id="treatment2-create-table">
+        <createTable tableName="TREATMENT2">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="GROUP_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ABBREVIATION" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VALID" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GENERIC_NAME" type="VARCHAR(255)"/>
+            <column name="AMT_GRACE_PERIOD" type="DOUBLE"/>
+            <column name="AMT_DOSE_RANGE" type="DOUBLE"/>
+            <column name="AMT_RESPONSE_TIME" type="DOUBLE"/>
+            <column name="ADMINISTRATION_MECHANISM" type="VARCHAR(255)"/>
+            <column name="ALT_NAME_PATTERN" type="VARCHAR(255)"/>
+            <column name="DAILY_HIGH_DOSE" type="DOUBLE"/>
+            <column name="DAILY_LOW_DOSE" type="DOUBLE"/>
+            <column name="DISPLAY_NAME" type="VARCHAR(255)"/>
+            <column name="DRUG_FUNCTION" type="VARCHAR(255)"/>
+            <column name="DURATION_OF_ACTION" type="DOUBLE"/>
+            <column name="FORMULATION_PATTERN" type="VARCHAR(255)"/>
+            <column name="GENERIC_NAME_PATTERN" type="VARCHAR(255)"/>
+            <column name="GUIDELINE_CHART_NAME" type="VARCHAR(255)"/>
+            <column name="LAB_NAME_PATTERN" type="VARCHAR(255)"/>
+            <column name="LONG_ACTING" type="BOOLEAN"/>
+            <column name="LONG_ACTING_FREQUENCY" type="DOUBLE"/>
+            <column name="MAX_DOSE" type="DOUBLE"/>
+            <column name="MDD_DAILY_HIGH_DOSE" type="DOUBLE"/>
+            <column name="MDD_DAILY_LOW_DOSE" type="DOUBLE"/>
+            <column name="MDD_START_DOSE" type="DOUBLE"/>
+            <column name="RESPONSE_TIME" type="DOUBLE"/>
+            <column name="SERUM_LEVEL_HIGH" type="DOUBLE"/>
+            <column name="SERUM_LEVEL_LOW" type="DOUBLE"/>
+            <column name="SERUM_LEVEL_UNIT" type="VARCHAR(255)"/>
+            <column name="START_DOSE" type="DOUBLE"/>
+            <column name="unit" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
     <changeSet author="miden (generated)" id="1489345089097-32">
         <createTable tableName="TREATMENT_DETAIL">
             <column autoIncrement="true" name="ID" type="BIGINT">
@@ -144,6 +190,16 @@
                 <constraints nullable="false"/>
             </column>
             <column name="Drug" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Michael Iden" id="temp-treatment-details">
+        <createTable tableName="TREATMENT_TREATMENT_DETAIL">
+            <column name="TREATMENT_ID" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TREATMENT_DETAIL_ID" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -199,6 +255,15 @@
                   schemaName="public"
                   separator=","
                   tableName="TREATMENT_DETAIL"
+                  quotchar='"'>
+        </loadData>
+    </changeSet>
+    <changeSet author="Michael Iden" id="20170328-load-treatment-treatment-details">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/treatment-treatment-detail-20170404.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="TREATMENT_TREATMENT_DETAIL"
                   quotchar='"'>
         </loadData>
     </changeSet>

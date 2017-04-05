@@ -1,6 +1,7 @@
 package org.flinnfoundation.model;
 
 import lombok.Data;
+import org.flinnfoundation.model.enums.RuleType;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 

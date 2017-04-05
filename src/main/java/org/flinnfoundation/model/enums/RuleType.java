@@ -1,4 +1,4 @@
-package org.flinnfoundation.model;
+package org.flinnfoundation.model.enums;
 
 
 public enum RuleType {
