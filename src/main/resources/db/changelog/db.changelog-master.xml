@@ -77,32 +77,12 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="miden (generated)" id="1489345089097-31">
+    <changeSet author="Michael Iden" id="treatment-create-table">
         <createTable tableName="TREATMENT">
             <column name="ID" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="GROUP_ID" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="NAME" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ABBREVIATION" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="VALID" type="BOOLEAN">
-                <constraints nullable="false"/>
-            </column>
-            <column name="GENERIC_NAME" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Michael Iden" id="treatment2-create-table">
-        <createTable tableName="TREATMENT2">
-            <column name="ID" type="BIGINT">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="GROUP_ID" type="BIGINT">
+            <column name="TREATMENT_GROUP_ID" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="NAME" type="VARCHAR(255)">
@@ -143,22 +123,6 @@
             <column name="unit" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="miden (generated)" id="1489345089097-32">
-        <createTable tableName="TREATMENT_DETAIL">
-            <column autoIncrement="true" name="ID" type="BIGINT">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="TREATMENT_ID" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="KEY" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="VALUE" type="TEXT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-    </changeSet>
     <changeSet author="Michael Iden" id="1489345089097-33">
         <createTable tableName="TREATMENT_GROUP">
             <column name="ID" type="BIGINT">
@@ -194,15 +158,14 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Michael Iden" id="temp-treatment-details">
-        <createTable tableName="TREATMENT_TREATMENT_DETAIL">
-            <column name="TREATMENT_ID" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-            <column name="TREATMENT_DETAIL_ID" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
+    <changeSet author="Michael Iden" id="20170405-load-treatments">
+        <loadData encoding="UTF-8"
+                  file="db/sampledata/treatment-20170404.csv"
+                  schemaName="public"
+                  separator=","
+                  tableName="TREATMENT"
+                  quotchar='"'>
+        </loadData>
     </changeSet>
     <changeSet author="Michael Iden" id="20170328-load-messages">
         <loadData encoding="UTF-8"
@@ -231,39 +194,12 @@
                   quotchar='"'>
         </loadData>
     </changeSet>
-    <changeSet author="Michael Iden" id="20170328-load-treatments">
-        <loadData encoding="UTF-8"
-                  file="db/sampledata/treatment-20170329.csv"
-                  schemaName="public"
-                  separator=","
-                  tableName="TREATMENT"
-                  quotchar='"'>
-        </loadData>
-    </changeSet>
     <changeSet author="Michael Iden" id="20170328-load-treatment-groups">
         <loadData encoding="UTF-8"
                   file="db/sampledata/treatment-group-20170329.csv"
                   schemaName="public"
                   separator=","
                   tableName="TREATMENT_GROUP"
-                  quotchar='"'>
-        </loadData>
-    </changeSet>
-    <changeSet author="Michael Iden" id="20170328-load-treatment-details">
-        <loadData encoding="UTF-8"
-                  file="db/sampledata/treatment-detail-20170329.csv"
-                  schemaName="public"
-                  separator=","
-                  tableName="TREATMENT_DETAIL"
-                  quotchar='"'>
-        </loadData>
-    </changeSet>
-    <changeSet author="Michael Iden" id="20170328-load-treatment-treatment-details">
-        <loadData encoding="UTF-8"
-                  file="db/sampledata/treatment-treatment-detail-20170404.csv"
-                  schemaName="public"
-                  separator=","
-                  tableName="TREATMENT_TREATMENT_DETAIL"
                   quotchar='"'>
         </loadData>
     </changeSet>

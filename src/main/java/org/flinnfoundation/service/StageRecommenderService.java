@@ -288,7 +288,7 @@ public class StageRecommenderService {
 //                        if (!treatment_found && bean.getTreatment().getTreatmentname().toLowerCase().equals(treatment)) {
 //                            treatment_found = true;
 //                            treatment_stage = j+1;
-//                            // System.out.println("    Found Treatment2 at stage "+treatment_stage);
+//                            // System.out.println("    Found Treatment at stage "+treatment_stage);
 //                        }
 //                    }
 //                }

@@ -1,25 +1,69 @@
 package org.flinnfoundation.model;
 
 import lombok.Data;
+import org.flinnfoundation.model.enums.AdministrationMechanism;
+import org.flinnfoundation.model.enums.DrugFunction;
+import org.flinnfoundation.model.enums.Unit;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
 
 @Data
-@Entity
+@Embeddable
 public class TreatmentDetail {
 
-    @Id
-    @GeneratedValue
-    private long id;
+    private double amtGracePeriod;
 
-    private long treatmentId;
+    private double amtDoseRange;
 
-    private String key;
+    private double amtResponseTime;
 
-    @Lob
-    private String value;
+    @Enumerated(EnumType.STRING)
+    private AdministrationMechanism administrationMechanism;
+
+    private String altNamePattern;
+
+    private double dailyHighDose;
+
+    private double dailyLowDose;
+
+    private String displayName;
+
+    @Enumerated(EnumType.STRING)
+    private DrugFunction drugFunction;
+
+    private double durationOfAction;
+
+    private String formulationPattern;
+
+    private String genericNamePattern;
+
+    private String guidelineChartName;
+
+    private String labNamePattern;
+
+    private boolean longActing;
+
+    private double longActingFrequency;
+
+    private double maxDose;
+
+    private double mddDailyHighDose;
+
+    private double mddDailyLowDose;
+
+    private double mddStartDose;
+
+    private double responseTime;
+
+    private double serumLevelHigh;
+
+    private double serumLevelLow;
+
+    private String serumLevelUnit;
+
+    private double startDose;
+
+    @Enumerated(EnumType.STRING)
+    private Unit unit;
 
 }

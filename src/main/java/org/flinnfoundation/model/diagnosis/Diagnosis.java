@@ -1,6 +1,6 @@
 package org.flinnfoundation.model.diagnosis;
 
-import org.flinnfoundation.model.Treatment2;
+import org.flinnfoundation.model.Treatment;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,7 @@ public class Diagnosis {
 
     private int stage;
     private String source;
-    private List<Treatment2> treatments;
+    private List<Treatment> treatments;
 
 
 }

@@ -17,8 +17,7 @@ public class RecommendationController {
 
     @GetMapping("/recommend")
     public String getRecommendation(PatientDataDto patientData) {
-
-        recommendationService.transformData();
+        recommendationService.getTreatments();
         return "";
     }
 }
