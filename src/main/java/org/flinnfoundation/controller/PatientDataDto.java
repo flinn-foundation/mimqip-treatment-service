@@ -1,14 +1,14 @@
 package org.flinnfoundation.controller;
 
 import lombok.Data;
-import org.flinnfoundation.model.diagnosis.DiagnosisTemp;
+import org.flinnfoundation.model.Diagnosis;
 
 import java.time.LocalDate;
 
 @Data
 public class PatientDataDto {
 
-    private DiagnosisTemp diagnosis;
+    private Diagnosis diagnosis;
 
     private LocalDate dateOfBirth;
 

@@ -203,7 +203,7 @@
     </changeSet>
     <changeSet author="Michael Iden" id="20170328-load-messages">
         <loadData encoding="UTF-8"
-                  file="db/sampledata/message-20170328.csv"
+                  file="db/sampledata/message-20170406.csv"
                   schemaName="public"
                   separator=","
                   tableName="MESSAGE"
