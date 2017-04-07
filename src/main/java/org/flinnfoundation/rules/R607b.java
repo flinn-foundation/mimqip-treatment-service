@@ -4,30 +4,30 @@ import lombok.Data;
 import org.easyrules.annotation.Action;
 import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;
-import org.flinnfoundation.fact.Patient;
+import org.flinnfoundation.model.Patient;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
-@Rule(name = M607a.RULE)
-public class M607a {
+@Rule(name = R607b.RULE)
+public class R607b {
 
-    static final String RULE = "M607a";
+    static final String RULE = "R607b";
+    static final String MESSAGE_TAG = "M607b";
 
     private Patient patient;
-    private List<String> activeRules;
 
     @Condition
     public boolean when() {
 
         LocalDate threeDaysAgo = LocalDate.now().minusDays(3);
+        LocalDate lastEvaluationDate = patient.getLastEvaluationDate();
 
-        return patient.getLastEvaluationDate().isAfter(threeDaysAgo);
+        return lastEvaluationDate.isBefore(threeDaysAgo) || lastEvaluationDate.isEqual(threeDaysAgo);
     }
 
     @Action
     public void then() {
-        activeRules.add(RULE);
+        patient.addMessageTag(MESSAGE_TAG);
     }
 }

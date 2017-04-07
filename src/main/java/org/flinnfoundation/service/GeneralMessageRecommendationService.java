@@ -2,28 +2,40 @@ package org.flinnfoundation.service;
 
 import org.easyrules.api.RulesEngine;
 import org.easyrules.core.RulesEngineBuilder;
-import org.flinnfoundation.fact.Patient;
-import org.flinnfoundation.rules.M607a;
+import org.flinnfoundation.model.Message;
+import org.flinnfoundation.model.Patient;
+import org.flinnfoundation.respository.MessageRepository;
+import org.flinnfoundation.rules.R607a;
+import org.flinnfoundation.rules.R607b;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GeneralMessageRecommendationService {
 
     private RulesEngine rulesEngine;
+    private MessageRepository messageRepository;
 
+    private R607a r607a = new R607a();
+    private R607b r607b = new R607b();
 
-    public GeneralMessageRecommendationService() {
+    @Autowired
+    public GeneralMessageRecommendationService(MessageRepository messageRepository) {
+        this.messageRepository = messageRepository;
+
         rulesEngine = RulesEngineBuilder.aNewRulesEngine().build();
 
+        rulesEngine.registerRule(r607a);
+        rulesEngine.registerRule(r607b);
     }
 
-    public void getGeneralMessage(Patient patient) {
+    public Iterable<Message> getGeneralMessage(Patient patient) {
 
-        M607a m607a = new M607a();
-        m607a.setPatient(patient);
-
-        rulesEngine.registerRule(m607a);
+        r607a.setPatient(patient);
+        r607b.setPatient(patient);
 
         rulesEngine.fireRules();
+
+        return messageRepository.findByMessageTag(patient.getMessageTags());
     }
 }
