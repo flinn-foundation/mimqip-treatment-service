@@ -6,7 +6,6 @@ import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;
 import org.flinnfoundation.model.enums.TreatmentGroupType;
 
-@Data
 @Rule(name = R304.RULE, description = "If 2 or more SNRIs are prescribed at the same time")
 public class R304 extends PharmacologicalRule {
 

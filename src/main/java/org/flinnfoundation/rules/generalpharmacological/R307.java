@@ -1,12 +1,10 @@
 package org.flinnfoundation.rules.generalpharmacological;
 
-import lombok.Data;
 import org.easyrules.annotation.Action;
 import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;
 import org.flinnfoundation.model.enums.TreatmentGroupType;
 
-@Data
 @Rule(name = R307.RULE, description = "If a MAOI and a SSRI or SSRI are prescribed at the same time")
 public class R307 extends PharmacologicalRule {
 

@@ -7,7 +7,6 @@ import org.easyrules.annotation.Rule;
 
 import java.time.LocalDate;
 
-@Data
 @Rule(name = R607b.RULE)
 public class R607b extends GeneralMessageRule {
 

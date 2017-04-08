@@ -1,11 +1,9 @@
 package org.flinnfoundation.rules.generalconsistency;
 
-import lombok.Data;
 import org.easyrules.annotation.Action;
 import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;
 
-@Data
 @Rule(name = R106.RULE)
 public class R106 extends ConsistencyRule {
 

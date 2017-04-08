@@ -1,12 +1,10 @@
 package org.flinnfoundation.rules.generalpharmacological;
 
-import lombok.Data;
 import org.easyrules.annotation.Action;
 import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;
 import org.flinnfoundation.model.enums.TreatmentGroupType;
 
-@Data
 @Rule(name = R305.RULE, description = "IF 2 or more MAOIs are prescribed at the same time")
 public class R305 extends PharmacologicalRule {
 

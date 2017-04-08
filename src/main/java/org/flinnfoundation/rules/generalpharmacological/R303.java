@@ -6,7 +6,6 @@ import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;
 import org.flinnfoundation.model.enums.TreatmentGroupType;
 
-@Data
 @Rule(name = R303.RULE, description = "If 2 or more SSRIs are prescribed at the same time")
 public class R303 extends PharmacologicalRule {
 
