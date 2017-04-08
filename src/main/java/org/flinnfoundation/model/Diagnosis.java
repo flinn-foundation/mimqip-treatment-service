@@ -15,9 +15,9 @@ public class Diagnosis {
     private long id;
 
     @Enumerated(EnumType.STRING)
-    private DiagnosisType diagnosis;
+    private DiagnosisType diagnosisType;
 
-    private String stage;
+    private int stage;
 
     @Lob
     private String notes;

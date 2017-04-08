@@ -77,15 +77,15 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="miden (generated)" id="1489345089097-24">
+    <changeSet author="Michael Iden" id="diagnosis-create-table">
         <createTable tableName="DIAGNOSIS">
             <column autoIncrement="true" name="ID" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="DIAGNOSIS" type="VARCHAR(250)">
+            <column name="DIAGNOSIS_TYPE" type="VARCHAR(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="STAGE" type="VARCHAR(5)">
+            <column name="STAGE" type="INT">
                 <constraints nullable="false"/>
             </column>
             <column name="NOTES" type="TEXT">

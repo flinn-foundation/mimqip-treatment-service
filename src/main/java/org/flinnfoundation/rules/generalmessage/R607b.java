@@ -1,21 +1,18 @@
-package org.flinnfoundation.rules;
+package org.flinnfoundation.rules.generalmessage;
 
 import lombok.Data;
 import org.easyrules.annotation.Action;
 import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;
-import org.flinnfoundation.model.Patient;
 
 import java.time.LocalDate;
 
 @Data
 @Rule(name = R607b.RULE)
-public class R607b {
+public class R607b extends GeneralMessageRule {
 
     static final String RULE = "R607b";
     static final String MESSAGE_TAG = "M607b";
-
-    private Patient patient;
 
     @Condition
     public boolean when() {
@@ -28,6 +25,6 @@ public class R607b {
 
     @Action
     public void then() {
-        patient.addMessageTag(MESSAGE_TAG);
+        messageTags.add(MESSAGE_TAG);
     }
 }
