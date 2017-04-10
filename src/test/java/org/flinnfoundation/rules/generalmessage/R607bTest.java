@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -27,9 +28,7 @@ public class R607bTest extends R607TestSetup {
         evaluation.setEvaluationType(EvaluationType.PHQ9);
         evaluation.setCreated(LocalDateTime.now().minusDays(8));
 
-        rulesEngine.fireRules();
-
-        assertEquals(R607b.MESSAGE_TAG, messageTags.get(0));
+        assertTrue(r607b.when());
     }
 
     @Test
@@ -39,9 +38,7 @@ public class R607bTest extends R607TestSetup {
         evaluation.setEvaluationType(EvaluationType.PHQ9);
         evaluation.setCreated(LocalDateTime.now().minusDays(3));
 
-        rulesEngine.fireRules();
-
-        assertEquals(R607b.MESSAGE_TAG, messageTags.get(0));
+        assertTrue(r607b.when());
     }
 
     @Test
@@ -51,9 +48,13 @@ public class R607bTest extends R607TestSetup {
         evaluation.setEvaluationType(EvaluationType.PHQ9);
         evaluation.setCreated(LocalDateTime.now().minusDays(2));
 
-        rulesEngine.fireRules();
+        assertFalse(r607b.when());
+    }
 
-        assertTrue(messageTags.isEmpty());
+    @Test
+    public void patientEvaluationReturnsMessageTag() {
+        r607b.then();
+        assertEquals(R607b.MESSAGE_TAG,messageTags.get(0));
     }
 
 }

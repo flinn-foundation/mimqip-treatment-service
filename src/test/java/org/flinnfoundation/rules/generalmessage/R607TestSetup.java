@@ -1,7 +1,5 @@
 package org.flinnfoundation.rules.generalmessage;
 
-import org.easyrules.api.RulesEngine;
-import org.easyrules.core.RulesEngineBuilder;
 import org.flinnfoundation.model.Diagnosis;
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.model.evaluation.Evaluation;
@@ -10,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class R607TestSetup {
-
-    protected RulesEngine rulesEngine = RulesEngineBuilder.aNewRulesEngine().build();
 
     protected Diagnosis diagnosis = new Diagnosis();
     protected Evaluation evaluation = new Evaluation();
@@ -29,6 +25,5 @@ public class R607TestSetup {
         rule.setEvaluations(evaluations);
         rule.setMessageTags(messageTags);
 
-        rulesEngine.registerRule(rule);
     }
 }

@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -20,41 +21,60 @@ public class R607aTest extends R607TestSetup {
     }
 
     @Test
-    public void patientEvaluationIsNotRecentNoAction() {
+    public void patientEvaluationIsNotRecentReturnsFalse() {
 
         diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
 
         evaluation.setEvaluationType(EvaluationType.PHQ9);
         evaluation.setCreated(LocalDateTime.now().minusDays(8));
 
-        rulesEngine.fireRules();
-
-        assertTrue(messageTags.isEmpty());
+        assertFalse(r607a.when());
     }
 
     @Test
-    public void patientEvaluation3DaysAgoNoAction() {
+    public void patientEvaluation3DaysAgoReturnFalse() {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
 
         evaluation.setEvaluationType(EvaluationType.PHQ9);
         evaluation.setCreated(LocalDateTime.now().minusDays(3));
 
-        rulesEngine.fireRules();
-
-        assertTrue(messageTags.isEmpty());
+        assertFalse(r607a.when());
     }
 
     @Test
-    public void patientEvaluation2DaysAgoActionFires() {
+    public void patientEvaluation2DaysAgoReturnsTrue() {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
 
         evaluation.setEvaluationType(EvaluationType.PHQ9);
         evaluation.setCreated(LocalDateTime.now().minusDays(2));
 
-        rulesEngine.fireRules();
-
-        assertEquals(R607a.MESSAGE_TAG, messageTags.get(0));
+        assertTrue(r607a.when());
     }
 
+    @Test
+    public void patientEvaluation2DaysAgoGlobalEvalReturnsTrue() {
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+
+        evaluation.setEvaluationType(EvaluationType.GLOBAL);
+        evaluation.setCreated(LocalDateTime.now().minusDays(2));
+
+        assertTrue(r607a.when());
+    }
+
+    @Test
+    public void patientEvaluation2DaysAgoBipolarEvalReturnsFalse() {
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+
+        evaluation.setEvaluationType(EvaluationType.BBDSS);
+        evaluation.setCreated(LocalDateTime.now().minusDays(2));
+
+        assertFalse(r607a.when());
+    }
+
+    @Test
+    public void patientEvaluationReturnsMessageTag() {
+        r607a.then();
+        assertEquals(R607a.MESSAGE_TAG,messageTags.get(0));
+    }
 
 }
