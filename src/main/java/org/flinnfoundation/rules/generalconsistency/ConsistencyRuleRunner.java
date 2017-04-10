@@ -1,12 +1,10 @@
-package org.flinnfoundation.rulerunner;
+package org.flinnfoundation.rules.generalconsistency;
 
 import org.flinnfoundation.model.Diagnosis;
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.respository.DiagnosisRepository;
 import org.flinnfoundation.rules.AbstractBaseRule;
-import org.flinnfoundation.rules.generalconsistency.ConsistencyRule;
-import org.flinnfoundation.rules.generalconsistency.R101;
-import org.flinnfoundation.rules.generalconsistency.R102;
+import org.flinnfoundation.rules.AbstractBaseRuleRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +15,7 @@ import java.util.List;
 @Component
 public class ConsistencyRuleRunner extends AbstractBaseRuleRunner {
 
-    //TODO: having this be static scares me a bit maybe make the evaluate method synchronized
+    //TODO: having this be static scares me a bit maybe make the runRules method synchronized
     private static List<AbstractBaseRule> rules = Arrays.asList(new R101(), new R102());
 
     private DiagnosisRepository diagnosisRepository;
@@ -30,7 +28,7 @@ public class ConsistencyRuleRunner extends AbstractBaseRuleRunner {
     }
 
     @Override
-    public List<String> evaluate(Patient patient) {
+    public List<String> runRules(Patient patient) {
 
         Diagnosis patientDiagnosis = patient.getDiagnosis();
         List<Diagnosis> higherStageDiagnosis = diagnosisRepository.findDiagnosesByDiagnosisTypeAndStageGreaterThan(patientDiagnosis.getDiagnosisType(), patientDiagnosis.getStage());

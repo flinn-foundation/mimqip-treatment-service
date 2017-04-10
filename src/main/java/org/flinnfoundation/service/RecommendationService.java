@@ -3,9 +3,9 @@ package org.flinnfoundation.service;
 import org.flinnfoundation.model.Message;
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.respository.MessageRepository;
-import org.flinnfoundation.rulerunner.ConsistencyRuleRunner;
-import org.flinnfoundation.rulerunner.GeneralMessageRuleRunner;
-import org.flinnfoundation.rulerunner.PharmacologicalRuleRunner;
+import org.flinnfoundation.rules.generalconsistency.ConsistencyRuleRunner;
+import org.flinnfoundation.rules.generalmessage.GeneralMessageRuleRunner;
+import org.flinnfoundation.rules.generalpharmacological.PharmacologicalRuleRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +32,7 @@ public class RecommendationService {
     public List<Message> getMessagesForPatient(long patientId) {
         Patient patient = patientService.getPatient(patientId);
 
-        List<String> generalMessageTags = generalMessageRuleEvaluator.evaluate(patient);
+        List<String> generalMessageTags = generalMessageRuleEvaluator.runRules(patient);
         return messageRepository.findByMessageTag(generalMessageTags);
     }
 

@@ -1,11 +1,11 @@
-package org.flinnfoundation.rulerunner;
+package org.flinnfoundation.rules.generalpharmacological;
 
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.model.PatientTreatmentStatistics;
 import org.flinnfoundation.model.Treatment;
 import org.flinnfoundation.respository.TreatmentRepository;
 import org.flinnfoundation.rules.AbstractBaseRule;
-import org.flinnfoundation.rules.generalpharmacological.*;
+import org.flinnfoundation.rules.AbstractBaseRuleRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 public class PharmacologicalRuleRunner extends AbstractBaseRuleRunner {
 
-    //TODO: having this be static scares me a bit maybe make the evaluate method synchronized
+    //TODO: having this be static scares me a bit maybe make the runRules method synchronized
     private static List<AbstractBaseRule> rules = Arrays.asList(new R301(), new R302(), new R303(), new R304(), new R305(), new R306(), new R307());
 
     private TreatmentRepository treatmentRepository;
@@ -28,7 +28,7 @@ public class PharmacologicalRuleRunner extends AbstractBaseRuleRunner {
 
     }
 
-    public List<String> evaluate(Patient patient) {
+    public List<String> runRules(Patient patient) {
 
         List<Treatment> activeTreatments = treatmentRepository.getTreatmentsByGenericName(patient.getActiveMedicationGenericNames());
         PatientTreatmentStatistics patientTreatmentStatistics = new PatientTreatmentStatistics(activeTreatments);
