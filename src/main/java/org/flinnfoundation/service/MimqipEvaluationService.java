@@ -8,6 +8,7 @@ import org.flinnfoundation.mapper.EvaluationMapper;
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.model.evaluation.Evaluation;
 import org.flinnfoundation.model.evaluation.EvaluationType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retrofit2.Response;
 
@@ -21,6 +22,7 @@ public class MimqipEvaluationService implements EvaluationService {
     private MimqipEvaluationApi mimqipEvaluationApi;
     private EvaluationMapper evaluationMapper;
 
+    @Autowired
     public MimqipEvaluationService(MimqipEvaluationApi mimqipEvaluationApi, EvaluationMapper evaluationMapper) {
         this.mimqipEvaluationApi = mimqipEvaluationApi;
         this.evaluationMapper = evaluationMapper;

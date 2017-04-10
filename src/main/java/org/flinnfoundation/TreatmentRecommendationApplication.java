@@ -1,5 +1,6 @@
 package org.flinnfoundation;
 
+import org.flinnfoundation.api.mimqip.MimqipEvaluationApi;
 import org.flinnfoundation.api.mimqip.MimqipPatientApi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,12 +14,19 @@ public class TreatmentRecommendationApplication {
 		SpringApplication.run(TreatmentRecommendationApplication.class, args);
 	}
 
+	private Retrofit retrofit = new Retrofit.Builder()
+			.baseUrl("http://localhost:8080")
+			.build();
+
 	@Bean
-	public MimqipPatientApi initializeApi() {
-		Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("http://localhost:8080")
-				.build();
+	public MimqipPatientApi initializePatientApi() {
 
 		return retrofit.create(MimqipPatientApi.class);
+	}
+
+	@Bean
+	public MimqipEvaluationApi initializeEvaluationApi() {
+
+		return retrofit.create(MimqipEvaluationApi.class);
 	}
 }
