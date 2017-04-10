@@ -10,6 +10,10 @@ buildscript {
     }
 }
 
+plugins {
+    id "org.sonarqube" version "2.2"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -35,4 +39,9 @@ dependencies {
     testCompile 'org.springframework.boot:spring-boot-starter-test'
 
     compile 'org.easyrules:easyrules-core:2.4.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'ma.glasnost.orika:orika-core:1.5.0'
+    compile 'io.swagger:swagger-annotations:1.5.8'
 }

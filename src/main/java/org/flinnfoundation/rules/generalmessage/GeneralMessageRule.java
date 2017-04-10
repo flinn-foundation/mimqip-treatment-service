@@ -7,7 +7,7 @@ import org.flinnfoundation.rules.AbstractBaseRule;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-abstract public class GeneralMessageRule extends AbstractBaseRule {
+public abstract class GeneralMessageRule extends AbstractBaseRule {
 
     protected Patient patient;
 }

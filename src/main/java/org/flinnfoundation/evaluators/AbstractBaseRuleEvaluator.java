@@ -7,7 +7,7 @@ import org.flinnfoundation.rules.AbstractBaseRule;
 
 import java.util.List;
 
-abstract public class AbstractBaseRuleEvaluator {
+public abstract class AbstractBaseRuleEvaluator {
 
     protected RulesEngine rulesEngine;
 

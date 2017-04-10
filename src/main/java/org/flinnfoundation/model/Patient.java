@@ -10,6 +10,8 @@ import java.util.Set;
 @Data
 public class Patient {
 
+    private long id;
+
     private LocalDate lastEvaluationDate;
 
     private List<PatientMedication> patientMedications;

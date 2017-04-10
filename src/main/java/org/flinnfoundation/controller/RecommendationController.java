@@ -1,31 +1,27 @@
 package org.flinnfoundation.controller;
 
-import org.flinnfoundation.evaluators.GeneralMessageRuleEvaluator;
-import org.flinnfoundation.model.Patient;
+import org.flinnfoundation.model.Message;
+import org.flinnfoundation.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 public class RecommendationController {
 
-    private GeneralMessageRuleEvaluator generalMessageRecommendationService;
+    private RecommendationService recommendationService;
 
     @Autowired
-    public RecommendationController(GeneralMessageRuleEvaluator generalMessageRecommendationService) {
-        this.generalMessageRecommendationService = generalMessageRecommendationService;
+    public RecommendationController(RecommendationService recommendationService) {
+        this.recommendationService = recommendationService;
     }
 
     @GetMapping("/messages")
-    public List<String> getMessages(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate lastEvaluationDate) {
-        Patient patient = new Patient();
-        patient.setLastEvaluationDate(lastEvaluationDate);
+    public List<Message> getMessages(@RequestParam long patientId) {
 
-        return generalMessageRecommendationService.evaluate(patient);
+        return recommendationService.getMessagesForPatient(patientId);
     }
 }

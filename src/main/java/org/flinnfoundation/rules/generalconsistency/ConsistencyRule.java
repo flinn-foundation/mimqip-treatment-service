@@ -7,7 +7,7 @@ import org.flinnfoundation.rules.AbstractBaseRule;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-abstract public class ConsistencyRule extends AbstractBaseRule {
+public abstract class ConsistencyRule extends AbstractBaseRule {
 
     protected Patient patient;
 }

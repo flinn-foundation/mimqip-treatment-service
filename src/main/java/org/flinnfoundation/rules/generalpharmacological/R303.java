@@ -1,6 +1,5 @@
 package org.flinnfoundation.rules.generalpharmacological;
 
-import lombok.Data;
 import org.easyrules.annotation.Action;
 import org.easyrules.annotation.Condition;
 import org.easyrules.annotation.Rule;

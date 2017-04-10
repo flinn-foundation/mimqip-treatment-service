@@ -7,7 +7,7 @@ import org.flinnfoundation.rules.AbstractBaseRule;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-abstract public class PharmacologicalRule extends AbstractBaseRule {
+public abstract class PharmacologicalRule extends AbstractBaseRule {
 
     protected PatientTreatmentStatistics treatmentStatistics;
 }
