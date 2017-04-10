@@ -16,6 +16,7 @@ public abstract class OrikaMapper<T, K> {
 
     protected OrikaMapper(Class<T> clazzT, Class<K> clazzK) {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
+        mapperFactory.getConverterFactory().registerConverter(new DateConverter());
         mapperFactory.getConverterFactory().registerConverter(new LocalDateTimeConverter());
         mapperFactory.getConverterFactory().registerConverter(new PassThroughConverter(LocalDate.class));
         boundMapper = mapperFactory.getMapperFacade(clazzT, clazzK);

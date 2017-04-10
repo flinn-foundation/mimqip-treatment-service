@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface MimqipPatientApi {
 
-    @GET("users/{patientId}")
+    @GET("patients/{patientId}")
     Call<PatientDto> getPatient(@Path("patientId") long patientId);
 
-    @GET("users/{patientId}/medications")
+    @GET("patients/{patientId}/medications")
     Call<List<PatientMedicationDto>> getPatientMedications(@Path("patientId") long patientId);
 }

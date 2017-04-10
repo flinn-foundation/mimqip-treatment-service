@@ -1,4 +1,4 @@
-package org.flinnfoundation.evaluators;
+package org.flinnfoundation.rulerunner;
 
 import org.flinnfoundation.model.Diagnosis;
 import org.flinnfoundation.model.Patient;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class ConsistencyRuleEvaluator extends AbstractBaseRuleEvaluator {
+public class ConsistencyRuleRunner extends AbstractBaseRuleRunner {
 
     //TODO: having this be static scares me a bit maybe make the evaluate method synchronized
     private static List<AbstractBaseRule> rules = Arrays.asList(new R101(), new R102());
@@ -23,7 +23,7 @@ public class ConsistencyRuleEvaluator extends AbstractBaseRuleEvaluator {
     private DiagnosisRepository diagnosisRepository;
 
     @Autowired
-    public ConsistencyRuleEvaluator(DiagnosisRepository diagnosisRepository) {
+    public ConsistencyRuleRunner(DiagnosisRepository diagnosisRepository) {
         super(rules);
 
         this.diagnosisRepository = diagnosisRepository;

@@ -1,4 +1,4 @@
-package org.flinnfoundation.evaluators;
+package org.flinnfoundation.rulerunner;
 
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.model.PatientTreatmentStatistics;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class PharmacologicalRuleEvaluator extends AbstractBaseRuleEvaluator {
+public class PharmacologicalRuleRunner extends AbstractBaseRuleRunner {
 
     //TODO: having this be static scares me a bit maybe make the evaluate method synchronized
     private static List<AbstractBaseRule> rules = Arrays.asList(new R301(), new R302(), new R303(), new R304(), new R305(), new R306(), new R307());
@@ -22,7 +22,7 @@ public class PharmacologicalRuleEvaluator extends AbstractBaseRuleEvaluator {
     private TreatmentRepository treatmentRepository;
 
     @Autowired
-    public PharmacologicalRuleEvaluator(TreatmentRepository treatmentRepository) {
+    public PharmacologicalRuleRunner(TreatmentRepository treatmentRepository) {
         super(rules);
         this.treatmentRepository = treatmentRepository;
 

@@ -41,8 +41,8 @@ public class PatientMapper {
         return boundMapper.mapReverse(api);
     }
 
-    public List<PatientDto> convertModelToApiDto(Iterable<Patient> ruleEntities) {
-        return StreamSupport.stream(ruleEntities.spliterator(), false)
+    public List<PatientDto> convertModelToApiDto(Iterable<Patient> patients) {
+        return StreamSupport.stream(patients.spliterator(), false)
                 .map(this::convertModelToApiDto)
                 .collect(Collectors.toList());
     }

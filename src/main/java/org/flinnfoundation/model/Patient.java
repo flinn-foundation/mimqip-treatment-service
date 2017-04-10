@@ -2,7 +2,6 @@ package org.flinnfoundation.model;
 
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,8 +10,6 @@ import java.util.Set;
 public class Patient {
 
     private long id;
-
-    private LocalDate lastEvaluationDate;
 
     private List<PatientMedication> patientMedications;
 

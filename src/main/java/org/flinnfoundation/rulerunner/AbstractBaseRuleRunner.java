@@ -1,4 +1,4 @@
-package org.flinnfoundation.evaluators;
+package org.flinnfoundation.rulerunner;
 
 import org.easyrules.api.RulesEngine;
 import org.easyrules.core.RulesEngineBuilder;
@@ -7,11 +7,11 @@ import org.flinnfoundation.rules.AbstractBaseRule;
 
 import java.util.List;
 
-public abstract class AbstractBaseRuleEvaluator {
+public abstract class AbstractBaseRuleRunner {
 
     protected RulesEngine rulesEngine;
 
-    public AbstractBaseRuleEvaluator(List<AbstractBaseRule> rules) {
+    public AbstractBaseRuleRunner(List<AbstractBaseRule> rules) {
         rulesEngine = RulesEngineBuilder.aNewRulesEngine().build();
 
         for (AbstractBaseRule rule : rules) {
