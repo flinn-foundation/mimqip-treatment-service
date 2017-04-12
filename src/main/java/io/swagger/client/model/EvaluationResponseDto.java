@@ -6,18 +6,18 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * QuestionDto
+ * EvaluationResponseDto
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-04-11T15:29:29.097-04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-04-11T23:15:16.264-04:00")
 
-public class QuestionDto   {
+public class EvaluationResponseDto   {
   @JsonProperty("prompt")
   private String prompt = null;
 
-  @JsonProperty("response")
-  private String response = null;
+  @JsonProperty("answer")
+  private String answer = null;
 
-  public QuestionDto prompt(String prompt) {
+  public EvaluationResponseDto prompt(String prompt) {
     this.prompt = prompt;
     return this;
   }
@@ -35,22 +35,22 @@ public class QuestionDto   {
     this.prompt = prompt;
   }
 
-  public QuestionDto response(String response) {
-    this.response = response;
+  public EvaluationResponseDto answer(String answer) {
+    this.answer = answer;
     return this;
   }
 
    /**
-   * Get response
-   * @return response
+   * Get answer
+   * @return answer
   **/
   @ApiModelProperty(value = "")
-  public String getResponse() {
-    return response;
+  public String getAnswer() {
+    return answer;
   }
 
-  public void setResponse(String response) {
-    this.response = response;
+  public void setAnswer(String answer) {
+    this.answer = answer;
   }
 
 
@@ -62,23 +62,23 @@ public class QuestionDto   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    QuestionDto questionDto = (QuestionDto) o;
-    return Objects.equals(this.prompt, questionDto.prompt) &&
-        Objects.equals(this.response, questionDto.response);
+    EvaluationResponseDto evaluationResponseDto = (EvaluationResponseDto) o;
+    return Objects.equals(this.prompt, evaluationResponseDto.prompt) &&
+        Objects.equals(this.answer, evaluationResponseDto.answer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(prompt, response);
+    return Objects.hash(prompt, answer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class QuestionDto {\n");
+    sb.append("class EvaluationResponseDto {\n");
 
     sb.append("    prompt: ").append(toIndentedString(prompt)).append("\n");
-    sb.append("    response: ").append(toIndentedString(response)).append("\n");
+    sb.append("    answer: ").append(toIndentedString(answer)).append("\n");
     sb.append("}");
     return sb.toString();
   }

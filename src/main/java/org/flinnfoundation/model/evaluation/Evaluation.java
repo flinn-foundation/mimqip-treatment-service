@@ -13,7 +13,7 @@ public class Evaluation {
 
     private Patient patient;
 
-    private List<Question> questions;
+    private List<EvaluationResponse> evaluationResponses;
 
     private EvaluationType evaluationType;
 
