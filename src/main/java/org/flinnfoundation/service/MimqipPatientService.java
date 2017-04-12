@@ -10,6 +10,7 @@ import org.flinnfoundation.mapper.PatientMapper;
 import org.flinnfoundation.mapper.PatientMedicationMapper;
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.model.PatientMedication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retrofit2.Response;
 
@@ -24,6 +25,7 @@ public class MimqipPatientService implements PatientService {
     private PatientMapper patientMapper;
     private PatientMedicationMapper patientMedicationMapper;
 
+    @Autowired
     public MimqipPatientService(MimqipPatientApi mimqipPatientApi, PatientMapper patientMapper, PatientMedicationMapper patientMedicationMapper) {
         this.mimqipPatientApi = mimqipPatientApi;
         this.patientMapper = patientMapper;
@@ -33,7 +35,7 @@ public class MimqipPatientService implements PatientService {
     @Override
     public Patient getPatient(long patientId) {
         Patient patient = getPatientWithoutMedications(patientId);
-        patient.setPatientMedications(getPatientMedications(patient));
+//        patient.setPatientMedications(getPatientMedications(patient));
 
         return patient;
     }
@@ -61,7 +63,6 @@ public class MimqipPatientService implements PatientService {
             throw new MimqipPatientMedicationException(e);
         }
 
-        List<PatientMedicationDto> patientMedications = patientMedicationsResponse.body();
-        return patientMedicationMapper.convertApiDtoToModel(patientMedications);
+        return patientMedicationMapper.convertApiDtoToModel(patientMedicationsResponse.body());
     }
 }

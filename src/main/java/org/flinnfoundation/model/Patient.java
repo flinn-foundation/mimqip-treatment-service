@@ -1,6 +1,7 @@
 package org.flinnfoundation.model;
 
 import lombok.Data;
+import org.flinnfoundation.model.enums.DiagnosisType;
 
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Patient {
 
     private List<PatientMedication> patientMedications;
 
-    private Diagnosis diagnosis;
+    private DiagnosisType diagnosisType;
 
     public Set<String> getActiveMedicationGenericNames() {
         Set<String> activePatientGenericTreatmentNames = new HashSet<>();

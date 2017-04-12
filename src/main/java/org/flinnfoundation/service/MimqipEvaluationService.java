@@ -43,8 +43,7 @@ public class MimqipEvaluationService implements EvaluationService {
             throw new MimqipEvaluationException(e.getMessage(), e);
         }
 
-        List<EvaluationDto> evaluationDtos = evaluationResponse.body();
-        return evaluationMapper.convertApiDtoToModel(evaluationDtos);
+        return evaluationMapper.convertApiDtoToModel(evaluationResponse.body());
     }
 
 }
