@@ -23,9 +23,9 @@ public class R607aTest extends R607TestSetup {
     @Test
     public void patientEvaluationIsNotRecentReturnsFalse() {
 
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
-        evaluation.setEvaluationType(EvaluationType.PHQ9);
+        evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(8));
 
         assertFalse(r607a.when());
@@ -33,9 +33,9 @@ public class R607aTest extends R607TestSetup {
 
     @Test
     public void patientEvaluation3DaysAgoReturnFalse() {
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
-        evaluation.setEvaluationType(EvaluationType.PHQ9);
+        evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(3));
 
         assertFalse(r607a.when());
@@ -43,9 +43,9 @@ public class R607aTest extends R607TestSetup {
 
     @Test
     public void patientEvaluation2DaysAgoReturnsTrue() {
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
-        evaluation.setEvaluationType(EvaluationType.PHQ9);
+        evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(2));
 
         assertTrue(r607a.when());
@@ -53,7 +53,7 @@ public class R607aTest extends R607TestSetup {
 
     @Test
     public void patientEvaluation2DaysAgoGlobalEvalReturnsTrue() {
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(EvaluationType.GLOBAL);
         evaluation.setCreated(LocalDateTime.now().minusDays(2));
@@ -63,9 +63,9 @@ public class R607aTest extends R607TestSetup {
 
     @Test
     public void patientEvaluation2DaysAgoBipolarEvalReturnsFalse() {
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
-        evaluation.setEvaluationType(EvaluationType.BBDSS);
+        evaluation.setEvaluationType(DiagnosisType.SCHIZOPHRENIC_C.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(2));
 
         assertFalse(r607a.when());

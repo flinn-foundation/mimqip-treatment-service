@@ -2,8 +2,8 @@ package org.flinnfoundation.rules.generalmessage;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.flinnfoundation.model.Diagnosis;
 import org.flinnfoundation.model.Patient;
-import org.flinnfoundation.model.enums.DiagnosisType;
 import org.flinnfoundation.model.evaluation.Evaluation;
 import org.flinnfoundation.model.evaluation.EvaluationType;
 import org.flinnfoundation.rules.AbstractBaseRule;
@@ -21,9 +21,9 @@ public abstract class GeneralMessageRule extends AbstractBaseRule {
 
     protected boolean hasRecentRelatedEvaluation() {
         LocalDateTime threeDaysAgo = LocalDateTime.now().minusDays(3);
-        DiagnosisType diagnosis = patient.getDiagnosisType();
+        Diagnosis diagnosis = patient.getDiagnosis();
 
-        EvaluationType diagnosisEvaluationType = diagnosis.getEvaluationType();
+        EvaluationType diagnosisEvaluationType = diagnosis.getDiagnosisType().getEvaluationType();
 
         List<Evaluation> qualifyingEvaluations = new ArrayList<>();
         for (Evaluation evaluation : evaluations) {

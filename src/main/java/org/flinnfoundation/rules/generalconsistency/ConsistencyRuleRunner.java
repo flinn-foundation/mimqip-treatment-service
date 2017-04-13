@@ -31,7 +31,7 @@ public class ConsistencyRuleRunner extends AbstractBaseRuleRunner {
     @Override
     public List<String> runRules(Patient patient) {
 
-        DiagnosisType patientDiagnosis = patient.getDiagnosisType();
+        DiagnosisType patientDiagnosis = patient.getDiagnosis().getDiagnosisType();
         List<Diagnosis> higherStageDiagnosis = diagnosisRepository.findDiagnosesByDiagnosisTypeAndStageGreaterThan(patientDiagnosis, patientDiagnosis.getStage().ordinal());
         List<Diagnosis> lowerStageDiagnosis = diagnosisRepository.findDiagnosesByDiagnosisTypeAndStageLessThan(patientDiagnosis, patientDiagnosis.getStage().ordinal());
 

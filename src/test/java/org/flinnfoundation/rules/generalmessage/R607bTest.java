@@ -1,7 +1,6 @@
 package org.flinnfoundation.rules.generalmessage;
 
 import org.flinnfoundation.model.enums.DiagnosisType;
-import org.flinnfoundation.model.evaluation.EvaluationType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,9 +22,9 @@ public class R607bTest extends R607TestSetup {
     @Test
     public void patientEvaluationIsNotRecentActionFires() {
 
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
-        evaluation.setEvaluationType(EvaluationType.PHQ9);
+        evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(8));
 
         assertTrue(r607b.when());
@@ -33,9 +32,9 @@ public class R607bTest extends R607TestSetup {
 
     @Test
     public void patientEvaluation3DaysAgoActionFires() {
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
-        evaluation.setEvaluationType(EvaluationType.PHQ9);
+        evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(3));
 
         assertTrue(r607b.when());
@@ -43,9 +42,9 @@ public class R607bTest extends R607TestSetup {
 
     @Test
     public void patientEvaluation2DaysAgoNoAction() {
-        diagnosis.setDiagnosisType(DiagnosisType.MDD_NP);
+        diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
-        evaluation.setEvaluationType(EvaluationType.PHQ9);
+        evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(2));
 
         assertFalse(r607b.when());

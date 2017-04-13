@@ -39,7 +39,7 @@ public class GeneralMessageRuleRunnerTest {
     @Before
     public void setUp() throws Exception {
 
-        diagnosis.setDiagnosisType(DiagnosisType.SCHIZOPHRENIC);
+        diagnosis.setDiagnosisType(DiagnosisType.SCHIZOPHRENIC_C);
         patient.setDiagnosis(diagnosis);
         evaluations.add(evaluation);
 
@@ -56,7 +56,7 @@ public class GeneralMessageRuleRunnerTest {
     public void runRulesWithEvaluationsNotMatchingDiagnosisReturnsNeedEval() throws Exception {
 
 
-        evaluation.setEvaluationType(DiagnosisType.BIPOLAR_D.getEvaluationType());
+        evaluation.setEvaluationType(DiagnosisType.BIPOLAR_MRD1.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now());
 
         assertEquals(Arrays.asList(R607b.MESSAGE_TAG),generalMessageRuleRunner.runRules(patient));
@@ -65,7 +65,7 @@ public class GeneralMessageRuleRunnerTest {
     @Test
     public void runRulesWithOldEvaluationsReturnsNeedEval() throws Exception {
 
-        evaluation.setEvaluationType(DiagnosisType.SCHIZOPHRENIC.getEvaluationType());
+        evaluation.setEvaluationType(DiagnosisType.SCHIZOPHRENIC_C.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(4));
 
         assertEquals(Arrays.asList(R607b.MESSAGE_TAG),generalMessageRuleRunner.runRules(patient));
@@ -83,7 +83,7 @@ public class GeneralMessageRuleRunnerTest {
     @Test
     public void runRulesWithRecentEvaluationsReturnsValidEval() throws Exception {
 
-        evaluation.setEvaluationType(DiagnosisType.SCHIZOPHRENIC.getEvaluationType());
+        evaluation.setEvaluationType(DiagnosisType.SCHIZOPHRENIC_C.getEvaluationType());
         evaluation.setCreated(LocalDateTime.now().minusDays(2));
 
         assertEquals(Arrays.asList(R607a.MESSAGE_TAG),generalMessageRuleRunner.runRules(patient));
