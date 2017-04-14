@@ -1,9 +1,13 @@
 package org.flinnfoundation.controller;
 
+import org.flinnfoundation.model.Message;
 import org.flinnfoundation.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class RecommendationController {
@@ -15,15 +19,9 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    @GetMapping("/treatments")
-    public String getTreatments(PatientDataDto patientData) {
-        recommendationService.getTreatments();
-        return "";
-    }
+    @GetMapping("/messages")
+    public List<Message> getMessages(@RequestParam long patientId) {
 
-    @GetMapping("/diagnoses")
-    public String getDiagnoses(PatientDataDto patientData) {
-        recommendationService.getDiagnoses();
-        return "";
+        return recommendationService.getMessagesForPatient(patientId);
     }
 }

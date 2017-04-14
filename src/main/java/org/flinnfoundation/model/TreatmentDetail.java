@@ -5,7 +5,9 @@ import org.flinnfoundation.model.enums.AdministrationMechanism;
 import org.flinnfoundation.model.enums.DrugFunction;
 import org.flinnfoundation.model.enums.Unit;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Data
 @Embeddable

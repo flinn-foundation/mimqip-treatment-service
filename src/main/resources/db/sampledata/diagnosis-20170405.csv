@@ -1,4 +1,4 @@
-"ID","DIAGNOSIS","STAGE","NOTES"
+"ID","DIAGNOSIS_TYPE","STAGE","NOTES"
 1,MDD_NP,"1","Adapted from:  Suehs BT, Argo TR, Bendele SD, Crismon ML, Triedi MH, Krian B. Texas Medication Algorithm Project Procedural Manual: Major Depressive Disorder Algorithms. The Texas Department of State Health Services. 2008"
 2,MDD_NP,"2","Adapted from:  Suehs BT, Argo TR, Bendele SD, Crismon ML, Triedi MH, Krian B. Texas Medication Algorithm Project Procedural Manual: Major Depressive Disorder Algorithms. The Texas Department of State Health Services. 2008"
 3,MDD_NP,"3","Adapted from:  Suehs BT, Argo TR, Bendele SD, Crismon ML, Triedi MH, Krian B. Texas Medication Algorithm Project Procedural Manual: Major Depressive Disorder Algorithms. The Texas Department of State Health Services. 2008"
