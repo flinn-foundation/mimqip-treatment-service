@@ -1,4 +1,4 @@
-package org.flinnfoundation.mapper;
+package org.flinnfoundation.service.mimqip.mapper;
 
 
 import io.swagger.client.model.EvaluationDto;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -27,7 +27,7 @@ public class EvaluationMapper {
 
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
         mapperFactory.getConverterFactory().registerConverter(new DateConverter());
-        mapperFactory.getConverterFactory().registerConverter(new PassThroughConverter(LocalDateTime.class));
+        mapperFactory.getConverterFactory().registerConverter(new PassThroughConverter(OffsetDateTime.class));
         mapperFactory.getConverterFactory().registerConverter(new PassThroughConverter(LocalDate.class));
         mapperFactory.classMap(Evaluation.class, EvaluationDto.class)
                 .field("patient.id", "patientId")

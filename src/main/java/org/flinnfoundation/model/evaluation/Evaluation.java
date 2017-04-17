@@ -3,7 +3,7 @@ package org.flinnfoundation.model.evaluation;
 import lombok.Data;
 import org.flinnfoundation.model.Patient;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
@@ -17,6 +17,6 @@ public class Evaluation {
 
     private EvaluationType evaluationType;
 
-    private LocalDateTime created;
+    private OffsetDateTime created;
 
 }

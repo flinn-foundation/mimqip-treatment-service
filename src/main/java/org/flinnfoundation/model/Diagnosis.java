@@ -3,25 +3,20 @@ package org.flinnfoundation.model;
 import lombok.Data;
 import org.flinnfoundation.model.enums.DiagnosisType;
 
-import javax.persistence.*;
-import java.util.List;
+import java.util.Date;
 
 @Data
-@Entity
 public class Diagnosis {
 
-    @Id
-    @GeneratedValue
     private long id;
 
-    @Enumerated(EnumType.STRING)
+    private Patient patient;
+
     private DiagnosisType diagnosisType;
+
+    private String secondaryDiagnosis;
 
     private int stage;
 
-    @Lob
-    private String notes;
-
-    @OneToMany
-    private List<Treatment> treatments;
+    private Date createdTimestamp;
 }

@@ -1,6 +1,6 @@
-package org.flinnfoundation.mapper;
+package org.flinnfoundation.service.mimqip.mapper;
 
-import org.flinnfoundation.api.mimqip.PatientMedicationDto;
+import io.swagger.client.model.PatientMedicationDto;
 import org.flinnfoundation.model.PatientMedication;
 import org.springframework.stereotype.Component;
 

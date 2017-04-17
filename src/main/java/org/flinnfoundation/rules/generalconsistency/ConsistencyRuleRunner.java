@@ -1,6 +1,6 @@
 package org.flinnfoundation.rules.generalconsistency;
 
-import org.flinnfoundation.model.Diagnosis;
+import org.flinnfoundation.model.DiagnosisOld;
 import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.model.enums.DiagnosisType;
 import org.flinnfoundation.respository.DiagnosisRepository;
@@ -32,8 +32,8 @@ public class ConsistencyRuleRunner extends AbstractBaseRuleRunner {
     public List<String> runRules(Patient patient) {
 
         DiagnosisType patientDiagnosis = patient.getDiagnosis().getDiagnosisType();
-        List<Diagnosis> higherStageDiagnosis = diagnosisRepository.findDiagnosesByDiagnosisTypeAndStageGreaterThan(patientDiagnosis, patientDiagnosis.getStage().ordinal());
-        List<Diagnosis> lowerStageDiagnosis = diagnosisRepository.findDiagnosesByDiagnosisTypeAndStageLessThan(patientDiagnosis, patientDiagnosis.getStage().ordinal());
+        List<DiagnosisOld> higherStageDiagnosis = diagnosisRepository.findDiagnosesByDiagnosisTypeAndStageGreaterThan(patientDiagnosis, patientDiagnosis.getStage().ordinal());
+        List<DiagnosisOld> lowerStageDiagnosis = diagnosisRepository.findDiagnosesByDiagnosisTypeAndStageLessThan(patientDiagnosis, patientDiagnosis.getStage().ordinal());
 
         List<String> messageTags = new ArrayList<>();
         for(AbstractBaseRule rule : rules) {

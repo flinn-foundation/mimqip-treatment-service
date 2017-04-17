@@ -1,12 +1,9 @@
 package io.swagger.client.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDate;
@@ -18,7 +15,7 @@ import java.util.Objects;
 /**
  * PatientDto
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-04-11T15:29:29.097-04:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-04-14T09:52:04.518-04:00")
 
 public class PatientDto {
     @JsonProperty("id")
@@ -65,94 +62,11 @@ public class PatientDto {
     private SexEnum sex = null;
 
     @JsonProperty("dateOfBirth")
-    @JsonSerialize(using = LocalDateSerializer.class)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonIgnore
     private LocalDate dateOfBirth = null;
 
     @JsonProperty("valid")
     private Boolean valid = null;
-
-    /**
-     * Gets or Sets diagnosisType
-     */
-    public enum DiagnosisTypeEnum {
-        SCHIZOPHRENIC_P("SCHIZOPHRENIC_P"),
-
-        SCHIZOPHRENIC_D("SCHIZOPHRENIC_D"),
-
-        SCHIZOPHRENIC_C("SCHIZOPHRENIC_C"),
-
-        SCHIZOPHRENIC_U("SCHIZOPHRENIC_U"),
-
-        SCHIZOPHRENIC_R("SCHIZOPHRENIC_R"),
-
-        BIPOLAR_SM1("BIPOLAR_SM1"),
-
-        BIPOLAR_SM2("BIPOLAR_SM2"),
-
-        BIPOLAR_SM3("BIPOLAR_SM3"),
-
-        BIPOLAR_SM4("BIPOLAR_SM4"),
-
-        BIPOLAR_MRMH("BIPOLAR_MRMH"),
-
-        BIPOLAR_MRM1("BIPOLAR_MRM1"),
-
-        BIPOLAR_MRM2("BIPOLAR_MRM2"),
-
-        BIPOLAR_MRM3("BIPOLAR_MRM3"),
-
-        BIPOLAR_MRM4("BIPOLAR_MRM4"),
-
-        BIPOLAR_MRD1("BIPOLAR_MRD1"),
-
-        BIPOLAR_MRD2("BIPOLAR_MRD2"),
-
-        BIPOLAR_MRD3("BIPOLAR_MRD3"),
-
-        BIPOLAR_MRD4("BIPOLAR_MRD4"),
-
-        MDD_S1("MDD_S1"),
-
-        MDD_S2("MDD_S2"),
-
-        MDD_S3("MDD_S3"),
-
-        MDD_S4("MDD_S4"),
-
-        MDD_R1("MDD_R1"),
-
-        MDD_R2("MDD_R2"),
-
-        MDD_R3("MDD_R3"),
-
-        MDD_R4("MDD_R4");
-
-        private String value;
-
-        DiagnosisTypeEnum(String value) {
-            this.value = value;
-        }
-
-        @Override
-        @JsonValue
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        @JsonCreator
-        public static DiagnosisTypeEnum fromValue(String text) {
-            for (DiagnosisTypeEnum b : DiagnosisTypeEnum.values()) {
-                if (String.valueOf(b.value).equals(text)) {
-                    return b;
-                }
-            }
-            return null;
-        }
-    }
-
-    @JsonProperty("diagnosisType")
-    private DiagnosisTypeEnum diagnosisType = null;
 
     @JsonProperty("zipCode")
     private String zipCode = null;
@@ -165,7 +79,7 @@ public class PatientDto {
 
         BLACK("BLACK"),
 
-        INDIAN_AMERICAN("INDIAN_AMERICAN"),
+        AMERICAN_INDIAN("AMERICAN_INDIAN"),
 
         ASIAN("ASIAN"),
 
@@ -482,25 +396,6 @@ public class PatientDto {
         this.valid = valid;
     }
 
-    public PatientDto diagnosisType(DiagnosisTypeEnum diagnosisType) {
-        this.diagnosisType = diagnosisType;
-        return this;
-    }
-
-    /**
-     * Get diagnosisType
-     *
-     * @return diagnosisType
-     **/
-    @ApiModelProperty(value = "")
-    public DiagnosisTypeEnum getDiagnosisType() {
-        return diagnosisType;
-    }
-
-    public void setDiagnosisType(DiagnosisTypeEnum diagnosisType) {
-        this.diagnosisType = diagnosisType;
-    }
-
     public PatientDto zipCode(String zipCode) {
         this.zipCode = zipCode;
         return this;
@@ -693,7 +588,6 @@ public class PatientDto {
                 Objects.equals(this.sex, patientDto.sex) &&
                 Objects.equals(this.dateOfBirth, patientDto.dateOfBirth) &&
                 Objects.equals(this.valid, patientDto.valid) &&
-                Objects.equals(this.diagnosisType, patientDto.diagnosisType) &&
                 Objects.equals(this.zipCode, patientDto.zipCode) &&
                 Objects.equals(this.race, patientDto.race) &&
                 Objects.equals(this.ethnicity, patientDto.ethnicity) &&
@@ -707,7 +601,7 @@ public class PatientDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, sex, dateOfBirth, valid, diagnosisType, zipCode, race, ethnicity, marital, living, employment, primaryCarePhysicianName, primaryCarePhysicianEmail, startDate);
+        return Objects.hash(id, firstName, lastName, sex, dateOfBirth, valid, zipCode, race, ethnicity, marital, living, employment, primaryCarePhysicianName, primaryCarePhysicianEmail, startDate);
     }
 
     @Override
@@ -721,7 +615,6 @@ public class PatientDto {
         sb.append("    sex: ").append(toIndentedString(sex)).append("\n");
         sb.append("    dateOfBirth: ").append(toIndentedString(dateOfBirth)).append("\n");
         sb.append("    valid: ").append(toIndentedString(valid)).append("\n");
-        sb.append("    diagnosisType: ").append(toIndentedString(diagnosisType)).append("\n");
         sb.append("    zipCode: ").append(toIndentedString(zipCode)).append("\n");
         sb.append("    race: ").append(toIndentedString(race)).append("\n");
         sb.append("    ethnicity: ").append(toIndentedString(ethnicity)).append("\n");
