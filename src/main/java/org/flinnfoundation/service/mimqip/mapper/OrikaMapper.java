@@ -1,4 +1,4 @@
-package org.flinnfoundation.mapper;
+package org.flinnfoundation.service.mimqip.mapper;
 
 import ma.glasnost.orika.BoundMapperFacade;
 import ma.glasnost.orika.MapperFactory;

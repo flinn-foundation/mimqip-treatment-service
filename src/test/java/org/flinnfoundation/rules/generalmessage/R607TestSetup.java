@@ -9,20 +9,20 @@ import java.util.List;
 
 public class R607TestSetup {
 
-    protected Diagnosis diagnosis = new Diagnosis();
-    protected Evaluation evaluation = new Evaluation();
+    Diagnosis diagnosis = new Diagnosis();
+    Evaluation evaluation = new Evaluation();
 
-    protected Patient patient = new Patient();
-    protected List<Evaluation> evaluations = new ArrayList<>();
-    protected List<String> messageTags = new ArrayList<>();
+    Patient patient = new Patient();
+    List<Evaluation> evaluations = new ArrayList<>();
+    List<String> messageTags = new ArrayList<>();
 
     public void setUp(GeneralMessageRule rule) {
 
         patient.setDiagnosis(diagnosis);
         evaluations.add(evaluation);
+        patient.setEvaluations(evaluations);
 
         rule.setPatient(patient);
-        rule.setEvaluations(evaluations);
         rule.setMessageTags(messageTags);
 
     }

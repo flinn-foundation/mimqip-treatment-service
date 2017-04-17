@@ -1,13 +1,13 @@
-package org.flinnfoundation.service;
+package org.flinnfoundation.service.mimqip;
 
 import io.swagger.client.model.EvaluationDto;
 import lombok.extern.slf4j.Slf4j;
 import org.flinnfoundation.api.mimqip.MimqipEvaluationApi;
-import org.flinnfoundation.exception.MimqipEvaluationException;
-import org.flinnfoundation.mapper.EvaluationMapper;
-import org.flinnfoundation.model.Patient;
 import org.flinnfoundation.model.evaluation.Evaluation;
 import org.flinnfoundation.model.evaluation.EvaluationType;
+import org.flinnfoundation.service.EvaluationService;
+import org.flinnfoundation.service.mimqip.exception.MimqipEvaluationException;
+import org.flinnfoundation.service.mimqip.mapper.EvaluationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import retrofit2.Response;
@@ -29,15 +29,15 @@ public class MimqipEvaluationService implements EvaluationService {
     }
 
     @Override
-    public List<Evaluation> getEvaluations(Patient patient) {
-        return getEvaluations(patient, null);
+    public List<Evaluation> getEvaluations(long patientId) {
+        return getEvaluations(patientId, null);
     }
 
     @Override
-    public List<Evaluation> getEvaluations(Patient patient, EvaluationType evaluationType) {
+    public List<Evaluation> getEvaluations(long patientId, EvaluationType evaluationType) {
         Response<List<EvaluationDto>> evaluationResponse;
         try {
-            evaluationResponse = mimqipEvaluationApi.getEvaluations(patient.getId(), evaluationType).execute();
+            evaluationResponse = mimqipEvaluationApi.getEvaluations(patientId, evaluationType).execute();
         } catch (IOException e) {
             log.error(e.getMessage());
             throw new MimqipEvaluationException(e.getMessage(), e);

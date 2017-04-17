@@ -5,7 +5,7 @@ import org.flinnfoundation.model.evaluation.EvaluationType;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
@@ -26,7 +26,7 @@ public class R607aTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
-        evaluation.setCreated(LocalDateTime.now().minusDays(8));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(8));
 
         assertFalse(r607a.when());
     }
@@ -36,7 +36,7 @@ public class R607aTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
-        evaluation.setCreated(LocalDateTime.now().minusDays(3));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(3));
 
         assertFalse(r607a.when());
     }
@@ -46,7 +46,7 @@ public class R607aTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
-        evaluation.setCreated(LocalDateTime.now().minusDays(2));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(2));
 
         assertTrue(r607a.when());
     }
@@ -56,7 +56,7 @@ public class R607aTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(EvaluationType.GLOBAL);
-        evaluation.setCreated(LocalDateTime.now().minusDays(2));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(2));
 
         assertTrue(r607a.when());
     }
@@ -66,7 +66,7 @@ public class R607aTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(DiagnosisType.SCHIZOPHRENIC_C.getEvaluationType());
-        evaluation.setCreated(LocalDateTime.now().minusDays(2));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(2));
 
         assertFalse(r607a.when());
     }

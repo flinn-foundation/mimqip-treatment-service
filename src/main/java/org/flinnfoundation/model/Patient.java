@@ -1,6 +1,7 @@
 package org.flinnfoundation.model;
 
 import lombok.Data;
+import org.flinnfoundation.model.evaluation.Evaluation;
 
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +15,8 @@ public class Patient {
     private List<PatientMedication> patientMedications;
 
     private Diagnosis diagnosis;
+
+    private List<Evaluation> evaluations;
 
     public Set<String> getActiveMedicationGenericNames() {
         Set<String> activePatientGenericTreatmentNames = new HashSet<>();

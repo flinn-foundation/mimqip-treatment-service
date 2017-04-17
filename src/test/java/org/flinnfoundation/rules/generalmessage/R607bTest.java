@@ -4,7 +4,7 @@ import org.flinnfoundation.model.enums.DiagnosisType;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
@@ -25,7 +25,7 @@ public class R607bTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
-        evaluation.setCreated(LocalDateTime.now().minusDays(8));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(8));
 
         assertTrue(r607b.when());
     }
@@ -35,7 +35,7 @@ public class R607bTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
-        evaluation.setCreated(LocalDateTime.now().minusDays(3));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(3));
 
         assertTrue(r607b.when());
     }
@@ -45,7 +45,7 @@ public class R607bTest extends R607TestSetup {
         diagnosis.setDiagnosisType(DiagnosisType.MDD_R1);
 
         evaluation.setEvaluationType(DiagnosisType.MDD_R1.getEvaluationType());
-        evaluation.setCreated(LocalDateTime.now().minusDays(2));
+        evaluation.setCreated(OffsetDateTime.now().minusDays(2));
 
         assertFalse(r607b.when());
     }

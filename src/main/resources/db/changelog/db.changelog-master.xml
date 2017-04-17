@@ -77,7 +77,7 @@
         </createTable>
     </changeSet>
     <changeSet author="Michael Iden" id="diagnosis-create-table">
-        <createTable tableName="DIAGNOSIS">
+        <createTable tableName="DIAGNOSIS_OLD">
             <column autoIncrement="true" name="ID" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
@@ -155,8 +155,8 @@
         </createTable>
     </changeSet>
     <changeSet author="Michael Iden" id="diagnosis-treatments-create-table">
-        <createTable tableName="DIAGNOSIS_TREATMENTS">
-            <column name="DIAGNOSIS_ID" type="BIGINT">
+        <createTable tableName="DIAGNOSIS_OLD_TREATMENTS">
+            <column name="DIAGNOSIS_OLD_ID" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
             <column name="TREATMENTS_ID" type="BIGINT">
@@ -169,7 +169,7 @@
                   file="db/sampledata/diagnosis-20170405.csv"
                   schemaName="public"
                   separator=","
-                  tableName="DIAGNOSIS"
+                  tableName="DIAGNOSIS_OLD"
                   quotchar='"'>
         </loadData>
     </changeSet>
@@ -196,7 +196,7 @@
                   file="db/sampledata/diagnosis-treatments-20170405.csv"
                   schemaName="public"
                   separator=","
-                  tableName="DIAGNOSIS_TREATMENTS"
+                  tableName="DIAGNOSIS_OLD_TREATMENTS"
                   quotchar='"'>
         </loadData>
     </changeSet>

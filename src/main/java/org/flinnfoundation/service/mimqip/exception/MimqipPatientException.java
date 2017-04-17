@@ -1,4 +1,4 @@
-package org.flinnfoundation.exception;
+package org.flinnfoundation.service.mimqip.exception;
 
 public class MimqipPatientException extends RuntimeException {
     public MimqipPatientException() {

@@ -3,11 +3,9 @@ package io.swagger.client.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,9 +25,8 @@ public class EvaluationDto   {
   @JsonProperty("evaluationResponses")
   private List<EvaluationResponseDto> evaluationResponses = new ArrayList<EvaluationResponseDto>();
 
-    @JsonProperty("created")
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime created = null;
+  @JsonProperty("created")
+  private OffsetDateTime created = null;
 
   /**
    * Gets or Sets evaluationType
@@ -136,7 +133,7 @@ public class EvaluationDto   {
     this.evaluationResponses = evaluationResponses;
   }
 
-  public EvaluationDto created(LocalDateTime created) {
+  public EvaluationDto created(OffsetDateTime created) {
     this.created = created;
     return this;
   }
@@ -146,11 +143,11 @@ public class EvaluationDto   {
    * @return created
   **/
   @ApiModelProperty(value = "")
-  public LocalDateTime getCreated() {
+  public OffsetDateTime getCreated() {
     return created;
   }
 
-  public void setCreated(LocalDateTime created) {
+  public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
